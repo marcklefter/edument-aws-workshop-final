@@ -29,6 +29,10 @@ exec: true     # Enable running commands in your container.
 network:
   connect: true # Enable Service Connect for intra-environment traffic between services.
 
+publish:
+  topics:
+    - name: requestsTopic
+
 taskdef_overrides:
   - path: "ContainerDefinitions[0].PortMappings[0].appProtocol"
     value: "http"
