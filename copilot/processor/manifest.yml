@@ -33,7 +33,7 @@ subscribe:
   topics:
     - name: requestsTopic
       service: api
-
+  
 # Optional fields for more advanced use-cases.
 #
 #variables:                    # Pass environment variables as key value pairs.

@@ -1,12 +1,12 @@
+// eslint-disable-next-line no-unused-vars
+const tracer = require('./tracer')('content');
+
 const express   = require('express');
 const env       = require('./env');
 const fault     = require('./middleware');
 const routes    = require('./routes');
 
 // ...
-
-// eslint-disable-next-line no-unused-vars
-const tracer = require('./tracer')('content');
 
 const app = express();
 app.use(express.json());

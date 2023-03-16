@@ -31,7 +31,7 @@ routes.post('/content', async (_, res) => {
     // ...
     
     await sns.send(new PublishCommand({
-        Message: request.id,
+        Message: JSON.stringify(request.id),
         TopicArn: env.requestsTopic
     }));
 
