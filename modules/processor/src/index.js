@@ -1,3 +1,5 @@
+const crypto = require('crypto');
+
 const { 
   SQSClient, 
   DeleteMessageCommand,
@@ -22,6 +24,17 @@ const stopRunning = () => {
 
 process.on('SIGINT', stopRunning);
 process.on('SIGTERM', stopRunning);
+
+// ...
+
+const delay = delayMs => {
+  return new Promise(resolve => {
+    setTimeout(resolve, delayMs)
+  });
+};
+
+let noProcessedMessages = 0;
+const instanceId = crypto.randomUUID();
 
 // ...
 
@@ -53,7 +66,8 @@ const processor = async () => {
 
       // ...
       // Process message by updating the request status.
-      console.log('Processing request with ID: ' + requestId);
+      await delay(1 * 1000);
+      console.log(`Instance ${instanceId} processing request with ID: ${requestId}, (${++noProcessedMessages})`);
 
       // TBD: Invoke TMS Content service to update request's status (= "pending").
 
